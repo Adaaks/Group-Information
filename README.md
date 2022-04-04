@@ -18,4 +18,4 @@
 
 # Example 
 
-![alt text](https://cdn.discordapp.com/attachments/934526268697886760/960521294712045628/frioty.png)
+![alt text](https://cdn.discordapp.com/attachments/934526268697886760/960525686303490118/unknown.png)
