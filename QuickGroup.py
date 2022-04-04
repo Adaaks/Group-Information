@@ -60,9 +60,8 @@ def begin():
 			members = request['memberCount']
 			entry = request['publicEntryAllowed']
 
-			try:
-				shout = request['shout']['body']
-			except:
+			shout = request['shout']['body']
+			if not shout:
 				shout = "None"
 
 			if entry == True:
@@ -110,14 +109,14 @@ def begin():
 				fulluser = f'{displayname} (@{username})'
 			except:
 				fulluser = "Nobody"
+				ownerid1 = "0"
 
 			name = request['name']
 			members = request['memberCount']
 			entry = request['publicEntryAllowed']
-
-			try:
-				shout = request['shout']['body']
-			except:
+			
+			shout = request['shout']['body']
+			if not shout:
 				shout = "None"
 
 			if entry == True:
