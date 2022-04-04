@@ -13,11 +13,17 @@ except ImportError:
 def begin():
 
 	print(Fore.CYAN + "\n-------------------------\n\nQuickGroup\n\n[1] = Group ID Search\n[2] = Group Name Search\n")
-	method = int(input(Fore.WHITE + "Method: "))
+	try:
+		method = int(input(Fore.WHITE + "Method: "))
+	except ValueError:
+		print(f'{Fore.RED}[ERROR] You must input either 1 or 2!')
+		time.sleep(1)
+		begin()
 
 	if method == 1:
 
 		def my1():
+
 			try:
 				group = int(input(Fore.WHITE +"Enter Group ID: "))
 			except:
