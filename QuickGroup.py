@@ -59,8 +59,10 @@ def begin():
 			name = request['name']
 			members = request['memberCount']
 			entry = request['publicEntryAllowed']
-
-			shout = request['shout']['body']
+			try:
+				shout = request['shout']['body']
+			except:
+				shout = "None"
 			if not shout:
 				shout = "None"
 
@@ -114,8 +116,10 @@ def begin():
 			name = request['name']
 			members = request['memberCount']
 			entry = request['publicEntryAllowed']
-			
-			shout = request['shout']['body']
+			try:
+				shout = request['shout']['body']
+			except:
+				shout = "None"
 			if not shout:
 				shout = "None"
 
