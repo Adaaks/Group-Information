@@ -12,7 +12,7 @@ except ImportError:
 	quit()
 def begin():
 
-	print(Fore.CYAN + "\n-------------------------\n\nQuickGroup\n\n[1] = Group ID Search\n[2] = Group Name Search\n")
+	print(Fore.CYAN + "\n-------------------------\n\nGroup Information\n\n[1] = Group ID Search\n[2] = Group Name Search\n")
 	try:
 		method = int(input(Fore.WHITE + "Method: "))
 	except:
