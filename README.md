@@ -1,4 +1,4 @@
-# QuickGroup
+# Group Information
 
 - Provides you with group information
 
