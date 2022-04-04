@@ -15,7 +15,8 @@
 
 - QuickGroup gives you the ability to search via a group id, or directly a group name
 - The console has colours, for the lgbtq fruity kids who love COLOURS!
+- Error free, no need to re-open the program once used once
 
 # Example 
 
-![alt text](https://cdn.discordapp.com/attachments/934526268697886760/960525686303490118/unknown.png)
+![alt text](https://cdn.discordapp.com/attachments/846481615278702602/960536697332985957/unknown.png)
