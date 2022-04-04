@@ -15,7 +15,7 @@ def begin():
 	print(Fore.CYAN + "\n-------------------------\n\nQuickGroup\n\n[1] = Group ID Search\n[2] = Group Name Search\n")
 	try:
 		method = int(input(Fore.WHITE + "Method: "))
-	except ValueError:
+	except:
 		print(f'{Fore.RED}[ERROR] You must input either 1 or 2!')
 		time.sleep(1)
 		begin()
@@ -29,7 +29,7 @@ def begin():
 			except:
 				print(f'{Fore.RED}[ERROR] Please input only numbers - not characters!')
 				time.sleep(1)
-				my1()
+				begin()
 
 			print("")
 			print(Fore.CYAN +"-------------------------\n")
@@ -38,16 +38,23 @@ def begin():
 			request = r.json()
 
 			getcreation = requests.get(f"https://groups.roblox.com/v2/groups?groupIds={group}")
-			getcreation2 = getcreation.json()
-			creationdate = getcreation2['data'][0]['created']
-
 			try:
 
+				getcreation2 = getcreation.json()
+				creationdate = getcreation2['data'][0]['created']
+			except:
+				print(f'{Fore.RED}[ERROR] Group not found!')
+				time.sleep(1)
+				begin()
+
+			try:
+				ownerid5 = request['owner']['userId']
 				username = request['owner']['username']
 				displayname = request['owner']['displayName']
 				fulluser = f'{displayname} (@{username})'
 			except:
 				fulluser = "Nobody"
+				ownerid5 = "0"
 
 			name = request['name']
 			members = request['memberCount']
@@ -63,8 +70,10 @@ def begin():
 			else:
 				entry = "Private"
 
-			print(f'{Fore.GREEN}Owner: {Fore.YELLOW}{fulluser}\n')
+			print(f'{Fore.GREEN}Owner: {Fore.YELLOW}{fulluser}')
+			print(f'{Fore.GREEN}Owner ID: {Fore.YELLOW}{ownerid5}\n')
 			print(f'{Fore.GREEN}Group: {Fore.YELLOW}{name}')
+			print(f'{Fore.GREEN}Group ID: {Fore.YELLOW}{group}')
 			print(f'{Fore.GREEN}Members: {Fore.YELLOW}{members}')
 			print(f'{Fore.GREEN}Shout: {Fore.YELLOW}{shout}')
 			print(f'{Fore.GREEN}Entry: {Fore.YELLOW}{entry}')
@@ -82,7 +91,11 @@ def begin():
 			
 			namebase = requests.get(f"https://groups.roblox.com/v1/groups/search/lookup?groupName={namesearch}")
 			getnames = namebase.json()
-			selected = getnames['data'][0]['id']
+			try:
+				selected = getnames['data'][0]['id']
+			except IndexError:
+				print(f'{Fore.RED}[ERROR] Group not found!')
+				begin()
 			
 			getcreation = requests.get(f"https://groups.roblox.com/v2/groups?groupIds={selected}")
 			getcreation2 = getcreation.json()
@@ -91,7 +104,7 @@ def begin():
 			request = r.json()
 			
 			try:
-
+				ownerid1 = request['owner']['userId']
 				username = request['owner']['username']
 				displayname = request['owner']['displayName']
 				fulluser = f'{displayname} (@{username})'
@@ -112,13 +125,21 @@ def begin():
 			else:
 				entry = "Private"
 
-			print(f'{Fore.GREEN}Owner: {Fore.YELLOW}{fulluser}\n')
+			print(f'{Fore.GREEN}Owner: {Fore.YELLOW}{fulluser}')
+			print(f'{Fore.GREEN}Owner ID: {Fore.YELLOW}{ownerid1}\n')
+			
 			print(f'{Fore.GREEN}Group: {Fore.YELLOW}{name}')
+			print(f'{Fore.GREEN}Group ID: {Fore.YELLOW}{selected}')
 			print(f'{Fore.GREEN}Members: {Fore.YELLOW}{members}')
 			print(f'{Fore.GREEN}Shout: {Fore.YELLOW}{shout}')
 			print(f'{Fore.GREEN}Entry: {Fore.YELLOW}{entry}')
 			print(f'{Fore.GREEN}Created: {Fore.YELLOW}{creationdate}')
 			begin()
 		my2()
+
+	else:
+		print(f'{Fore.RED}[ERROR] You must input either 1 or 2!')
+		time.sleep(1)
+		begin()
 begin()
 	
